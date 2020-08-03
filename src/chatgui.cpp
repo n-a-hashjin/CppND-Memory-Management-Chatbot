@@ -107,17 +107,12 @@ END_EVENT_TABLE()
 ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     : wxScrolledWindow(parent, id)
 {
-
-    std::cout << "ChatBotPanelDialog constructor" << std::endl;
     // sizer will take care of determining the needed scroll size
     _dialogSizer = new wxBoxSizer(wxVERTICAL);
     this->SetSizer(_dialogSizer);
 
     // allow for PNG images to be handled
     wxInitAllImageHandlers();
-
-    //// STUDENT CODE
-    ////
 
     // create chat logic instance
     _chatLogic = std::unique_ptr<ChatLogic>(new ChatLogic()); 
@@ -128,20 +123,6 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     // load answer graph from file
     _chatLogic->LoadAnswerGraphFromFile(dataPath + "src/answergraph.txt");
 
-    ////
-    //// EOF STUDENT CODE
-}
-
-ChatBotPanelDialog::~ChatBotPanelDialog()
-{
-    //// STUDENT CODE
-    ////
-    std::cout << "ChatBotPanelDialog destructor" << std::endl;
-
-    //delete _chatLogic;
-    
-    ////
-    //// EOF STUDENT CODE
 }
 
 void ChatBotPanelDialog::AddDialogItem(wxString text, bool isFromUser)
